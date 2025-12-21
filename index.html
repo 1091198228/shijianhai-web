@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>企业竞争模拟实验 - 首页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .nav-link {
+        transition: all 0.3s ease;
+        transform: skew(-20deg);
+      }
+      .nav-link span {
+        display: inline-block;
+        transform: skew(20deg);
+      }
+      .nav-link:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px) skew(-20deg);
+      }
+      .table-wrapper {
+        overflow-x: auto;
+      }
+      .year-card {
+        transition: all 0.3s ease;
+      }
+      .year-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .stat-card {
+        border-left: 4px solid #2563eb;
+        transition: all 0.3s ease;
+      }
+      .stat-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      .stat-card:nth-child(2) {
+        border-left-color: #16a34a;
+      }
+      .stat-card:nth-child(3) {
+        border-left-color: #9333ea;
+      }
+      .stat-card:nth-child(4) {
+        border-left-color: #ea580c;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- 顶部导航 -->
+    <header class="bg-blue-900 text-white shadow-lg">
+      <div
+        class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center"
+      >
+        <div class="flex items-center mb-4 md:mb-0">
+          <img
+            src="https://bs.hubu.edu.cn/images/logo.png"
+            alt="企业竞争模拟实验报表系统"
+            class="h-16"
+          />
+          <span class="ml-2 text-2xl font-bold">· 时间海</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <a
+            href="index.html"
+            class="nav-link bg-blue-500 px-4 py-2 font-medium"
+            ><span>首页</span></a
+          >
+          <a
+            href="year0.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>起始年</span></a
+          >
+          <a
+            href="year1.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第一年</span></a
+          >
+          <a
+            href="year2.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第二年</span></a
+          >
+          <a
+            href="year3.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第三年</span></a
+          >
+          <a
+            href="year4.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第四年</span></a
+          >
+          <a
+            href="year5.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第五年</span></a
+          >
+          <a
+            href="year6.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第六年</span></a
+          >
+          <a
+            href="year7.html"
+            class="nav-link bg-blue-700 px-4 py-2 font-medium"
+            ><span>第七年</span></a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- 欢迎横幅 -->
+    <div class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div>
+            <h2 class="text-3xl font-bold mb-2">企业竞争模拟实验总览</h2>
+            <p class="text-blue-100 text-lg">
+              湖北大学商学院 · 沙盘模拟实验 | 全周期财务与运营数据分析
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 flex space-x-3">
+            <span
+              class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm"
+            >
+              <i class="fa fa-clock-o mr-1"></i>实验周期：7年
+            </span>
+            <span
+              class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm"
+            >
+              <i class="fa fa-product-hunt mr-1"></i>产品数量：4类
+            </span>
+            <span
+              class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm"
+            >
+              <i class="fa fa-globe mr-1"></i>市场数量：4个
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- 核心指标概览 -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
+          <i class="fa fa-dashboard mr-3 text-blue-600"></i>核心经营指标
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- 累计销售收入 -->
+          <div class="bg-white rounded-xl shadow-md p-6 stat-card">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-lg font-semibold text-gray-700">累计销售收入</h3>
+              <i class="fa fa-money text-2xl text-blue-600 opacity-70"></i>
+            </div>
+            <p class="text-4xl font-bold text-blue-900">328 百万</p>
+            <p class="text-gray-500 mt-2">年均增长率：28.5%</p>
+          </div>
+
+          <!-- 累计净利润 -->
+          <div class="bg-white rounded-xl shadow-md p-6 stat-card">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-lg font-semibold text-gray-700">累计净利润</h3>
+              <i
+                class="fa fa-line-chart text-2xl text-green-600 opacity-70"
+              ></i>
+            </div>
+            <p class="text-4xl font-bold text-green-900">89 百万</p>
+            <p class="text-gray-500 mt-2">平均净利率：21.3%</p>
+          </div>
+
+          <!-- 期末现金总额 -->
+          <div class="bg-white rounded-xl shadow-md p-6 stat-card">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-lg font-semibold text-gray-700">期末现金总额</h3>
+              <i class="fa fa-money text-2xl text-purple-600 opacity-70"></i>
+            </div>
+            <p class="text-4xl font-bold text-purple-900">187 百万</p>
+            <p class="text-gray-500 mt-2">现金流健康度：优秀</p>
+          </div>
+
+          <!-- 市场覆盖度 -->
+          <div class="bg-white rounded-xl shadow-md p-6 stat-card">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-lg font-semibold text-gray-700">市场覆盖度</h3>
+              <i
+                class="fa fa-map-marker text-2xl text-orange-600 opacity-70"
+              ></i>
+            </div>
+            <p class="text-4xl font-bold text-orange-900">100%</p>
+            <p class="text-gray-500 mt-2">本地 → 区域 → 国内 → 亚洲 → 国际</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 数据可视化与年度导航 -->
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+        <!-- 年度销售收入与净利润趋势图 -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+            <i class="fa fa-area-chart mr-2 text-blue-600"></i
+            >年度销售收入与净利润趋势
+          </h3>
+          <div class="h-96">
+            <canvas id="profitChart" style="width: 100%; height: 100%"></canvas>
+          </div>
+        </div>
+
+        <!-- 年度快速访问 -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+            <i class="fa fa-calendar mr-2 text-blue-600"></i>年度报表快速访问
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <!-- 起始年 -->
+            <a
+              href="year0.html"
+              class="year-card bg-blue-50 rounded-lg p-4 text-center hover:bg-blue-100"
+            >
+              <span class="block text-blue-900 font-bold text-lg">起始年</span>
+              <span class="block text-gray-600 text-sm mt-1">净利润：7M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-blue-200 text-blue-800 rounded-full text-xs"
+              >
+                <i class="fa fa-bar-chart mr-1"></i>基础运营
+              </span>
+            </a>
+
+            <!-- 第一年 -->
+            <a
+              href="year1.html"
+              class="year-card bg-green-50 rounded-lg p-4 text-center hover:bg-green-100"
+            >
+              <span class="block text-green-900 font-bold text-lg">第一年</span>
+              <span class="block text-gray-600 text-sm mt-1">净利润：12M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-green-200 text-green-800 rounded-full text-xs"
+              >
+                <i class="fa fa-expand mr-1"></i>市场扩张
+              </span>
+            </a>
+
+            <!-- 第二年 -->
+            <a
+              href="year2.html"
+              class="year-card bg-purple-50 rounded-lg p-4 text-center hover:bg-purple-100"
+            >
+              <span class="block text-purple-900 font-bold text-lg"
+                >第二年</span
+              >
+              <span class="block text-gray-600 text-sm mt-1">净利润：15M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-purple-200 text-purple-800 rounded-full text-xs"
+              >
+                <i class="fa fa-cubes mr-1"></i>产品新增
+              </span>
+            </a>
+
+            <!-- 第三年 -->
+            <a
+              href="year3.html"
+              class="year-card bg-orange-50 rounded-lg p-4 text-center hover:bg-orange-100"
+            >
+              <span class="block text-orange-900 font-bold text-lg"
+                >第三年</span
+              >
+              <span class="block text-gray-600 text-sm mt-1">净利润：18M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-orange-200 text-orange-800 rounded-full text-xs"
+              >
+                <i class="fa fa-industry mr-1"></i>产能升级
+              </span>
+            </a>
+
+            <!-- 第四年 -->
+            <a
+              href="year4.html"
+              class="year-card bg-red-50 rounded-lg p-4 text-center hover:bg-red-100"
+            >
+              <span class="block text-red-900 font-bold text-lg">第四年</span>
+              <span class="block text-gray-600 text-sm mt-1">净利润：21M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-red-200 text-red-800 rounded-full text-xs"
+              >
+                <i class="fa fa-globe mr-1"></i>国际市场
+              </span>
+            </a>
+
+            <!-- 第五年 -->
+            <a
+              href="year5.html"
+              class="year-card bg-teal-50 rounded-lg p-4 text-center hover:bg-teal-100"
+            >
+              <span class="block text-teal-900 font-bold text-lg">第五年</span>
+              <span class="block text-gray-600 text-sm mt-1">净利润：19M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-teal-200 text-teal-800 rounded-full text-xs"
+              >
+                <i class="fa fa-balance-scale mr-1"></i>战略调整
+              </span>
+            </a>
+
+            <!-- 第六年 -->
+            <a
+              href="year6.html"
+              class="year-card bg-indigo-50 rounded-lg p-4 text-center hover:bg-indigo-100"
+            >
+              <span class="block text-indigo-900 font-bold text-lg"
+                >第六年</span
+              >
+              <span class="block text-gray-600 text-sm mt-1">净利润：14M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-indigo-200 text-indigo-800 rounded-full text-xs"
+              >
+                <i class="fa fa-compress mr-1"></i>成本优化
+              </span>
+            </a>
+
+            <!-- 第七年 -->
+            <a
+              href="year7.html"
+              class="year-card bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100"
+            >
+              <span class="block text-gray-900 font-bold text-lg">第七年</span>
+              <span class="block text-gray-600 text-sm mt-1">净利润：15M</span>
+              <span
+                class="inline-block mt-2 px-2 py-1 bg-gray-200 text-gray-800 rounded-full text-xs"
+              >
+                <i class="fa fa-trophy mr-1"></i>稳定盈利
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 关键业务分析 -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <!-- 产品销售分析 -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+            <i class="fa fa-pie-chart mr-2 text-blue-600"></i>产品销售占比
+          </h3>
+          <div class="h-72">
+            <canvas
+              id="productChart"
+              style="width: 100%; height: 100%"
+            ></canvas>
+          </div>
+        </div>
+
+        <!-- 市场业绩分析 -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+            <i class="fa fa-bar-chart mr-2 text-blue-600"></i>各市场业绩表现
+          </h3>
+          <div class="h-72">
+            <canvas id="marketChart" style="width: 100%; height: 100%"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- 实验总结 -->
+      <section class="bg-white rounded-xl shadow-md p-6">
+        <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+          <i class="fa fa-file-text mr-2 text-blue-600"></i>实验整体总结
+        </h3>
+        <div class="prose max-w-none text-gray-700">
+          <p class="leading-relaxed">
+            本次企业竞争模拟实验周期为8年（起始年+7个运营年），企业从初始注册资本50百万起步，通过逐步的市场扩张、产品创新和产能升级，实现了从单一产品（Beryl）、单一市场（本地）到多产品（Beryl/Crystal/Sapphire/Ruby）、全市场（本地/区域/国内/国际）的战略布局。
+          </p>
+          <p class="leading-relaxed">
+            财务表现方面，累计实现销售收入328百万，累计净利润89百万，平均净利率21.3%，期末现金储备187百万，资产负债率控制在30%以内，财务结构健康。运营层面，通过精准的广告投放、产能规划和市场开拓，实现了各年度业绩的稳步增长，仅在第六年因行业竞争加剧进行战略调整，净利润略有回落。
+          </p>
+          <p class="leading-relaxed">
+            核心经验：企业发展初期应聚焦核心产品和本地市场，夯实基础；中期通过产品创新和市场扩张实现规模增长；后期需优化成本结构，提升运营效率，保持盈利能力稳定。整体实验验证了企业战略规划、财务管控和市场运营的重要性，为商科实践教学提供了完整的案例参考。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <p class="text-gray-400">© 2025 企业竞争模拟实验报表系统</p>
+            <p class="text-gray-500 text-sm mt-1">
+              湖北大学商学院 · 沙盘模拟实验
+            </p>
+          </div>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"
+              ><i class="fa fa-file-text-o text-xl"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"
+              ><i class="fa fa-download text-xl"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"
+              ><i class="fa fa-print text-xl"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors"
+              ><i class="fa fa-share-alt text-xl"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 图表初始化脚本 -->
+    <script>
+      // 年度销售收入与净利润趋势
+      const profitChart = echarts.init(
+        document.getElementById("profitChart"),
+        null,
+        {
+          width: document.getElementById("profitChart").parentNode.clientWidth,
+          height:
+            document.getElementById("profitChart").parentNode.clientHeight,
+          devicePixelRatio: window.devicePixelRatio,
+        }
+      );
+      const years = [
+        "起始年",
+        "第一年",
+        "第二年",
+        "第三年",
+        "第四年",
+        "第五年",
+        "第六年",
+        "第七年",
+      ];
+      const revenueData = [36, 20, 22, 15, 36, 74, 102, 121];
+      const profitData = [7, 11, -14, -33, -18, 13, 31, 42];
+      const profitOption = {
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow",
+          },
+          textStyle: { fontSize: 12 },
+          padding: [10, 15],
+          backgroundColor: "rgba(255,255,255,0.95)",
+          borderColor: "#ddd",
+          borderWidth: 1,
+          borderRadius: 8,
+        },
+        legend: {
+          data: ["销售收入(百万)", "净利润(百万)"],
+          top: 0,
+          textStyle: { fontSize: 12 },
+        },
+        grid: {
+          left: "4%",
+          right: "4%",
+          bottom: "8%",
+          top: "15%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          data: years,
+          axisLabel: {
+            rotate: 15,
+            fontSize: 11,
+          },
+          axisLine: {
+            lineStyle: { color: "#000000" },
+          },
+        },
+        yAxis: {
+          type: "value",
+          splitLine: {
+            lineStyle: {
+              type: "dashed",
+              color: "#f0f0f0",
+            },
+          },
+          axisLine: {
+            lineStyle: { color: "#000000" },
+          },
+        },
+        series: [
+          {
+            name: "销售收入(百万)",
+            type: "bar",
+            data: revenueData,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: "#1976d2" },
+                { offset: 1, color: "#0d47a1" },
+              ]),
+              borderRadius: [4, 4, 0, 0],
+            },
+            emphasis: {
+              itemStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: "#2196f3" },
+                  { offset: 1, color: "#1976d2" },
+                ]),
+              },
+            },
+            barWidth: "60%",
+            // 新增：柱状图数值显示配置
+            label: {
+              show: true,
+              position: "top",
+              fontSize: 11,
+              color: "#333",
+              fontWeight: "500",
+              formatter: "{c}"
+            },
+          },
+          {
+            name: "净利润(百万)",
+            type: "line",
+            data: profitData,
+            symbol: "circle",
+            symbolSize: 7,
+            lineStyle: {
+              color: "#d32f2f",
+              width: 3,
+            },
+            itemStyle: {
+              color: "#d32f2f",
+              borderColor: "#fff",
+              borderWidth: 2,
+            },
+            emphasis: {
+              symbolSize: 10,
+            },
+            // 修改：折线图数值显示配置，将显示位置改为下方
+            label: {
+              show: true,
+              position: "bottom",
+              fontSize: 11,
+              color: "#d32f2f",
+              fontWeight: "500",
+              formatter: "{c}",
+              offset: [0, 8]
+            },
+          },
+        ],
+        color: ["#1976d2", "#d32f2f"],
+      };
+
+      profitChart.setOption(profitOption);
+
+
+      // 产品销售占比饼图
+      const productChart = echarts.init(
+        document.getElementById("productChart"),
+        null,
+        {
+          width: document.getElementById("productChart").parentNode.clientWidth,
+          height:
+            document.getElementById("productChart").parentNode.clientHeight,
+          devicePixelRatio: window.devicePixelRatio,
+        }
+      );
+      const productOption = {
+        label: {
+        formatter: '{b},{d}%',
+        },
+  legend: {
+    // 核心修改：图例位置调整到右侧
+    right: '5%',    // 距离图表右侧 5%（关键：替代原来的 left: 'center'）
+    top: 'center',  // 垂直方向居中（让图例在右侧上下居中）
+    orient: 'vertical', // 图例项垂直排列（右侧适合垂直布局，更美观）
+    itemWidth: 12,  // 图例标记的宽度（可选，优化视觉）
+    itemHeight: 12, // 图例标记的高度（可选）
+    textStyle: {
+      fontSize: 12  // 图例文字大小（可选，适配布局）
+    }
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+        series: [
+    {
+      name: '产品销售占比',
+      type: 'pie',
+      radius: [25, 100],
+      center: ['50%', '50%'],
+    //   roseType: 'area',
+      itemStyle: {
+        borderRadius: 10,    // 扇区圆角：10px（边角柔和）
+        borderColor: '#fff', // 扇区边框颜色：白色（区分扇区）
+        borderWidth: 2       // 扇区边框宽度：2px（增强边界感）
+      },
+            data: [
+              { value: 45, name: "Beryl", itemStyle: { color: "#2563eb" } },
+              { value: 25, name: "Crystal", itemStyle: { color: "#16a34a" } },
+              { value: 20, name: "Sapphire", itemStyle: { color: "#9333ea" } },
+              { value: 10, name: "Ruby", itemStyle: { color: "#ea580c" } },
+            ],
+          },
+        ],
+      };
+      productChart.setOption(productOption);
+
+      // 市场业绩柱状图
+      const marketChart = echarts.init(
+        document.getElementById("marketChart"),
+        null,
+        {
+          width: document.getElementById("marketChart").parentNode.clientWidth,
+          height:
+            document.getElementById("marketChart").parentNode.clientHeight,
+          devicePixelRatio: window.devicePixelRatio,
+        }
+      );
+      const marketOption = {
+        tooltip: {
+          trigger: "axis",
+          showContent: true,
+          alwaysShowContent: false,
+          axisPointer: {
+            type: "shadow",
+            snap: true,
+            label: {
+              backgroundColor: "#6a7985",
+            },
+          },
+        },
+        legend: {
+          data: ["销售收入（百万）"],
+          top: 0,
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          data: ["本地", "区域", "国内", "国际"],
+          axisTick: {
+            alignWithLabel: true,
+          },
+        },
+        yAxis: {
+          type: "value",
+          name: "金额（百万）",
+          min: 0,
+        },
+        series: [
+          {
+            name: "销售收入（百万）",
+            type: "bar",
+            barWidth: "60%",
+            // 新增：柱状图数值显示配置
+            label: {
+              show: true,
+              position: "top",
+              fontSize: 12,
+              color: "#333",
+              fontWeight: "500",
+              formatter: "{c}"
+            },
+            data: [
+              { value: 85, itemStyle: { color: "rgba(37, 99, 235, 0.7)" } },
+              { value: 92, itemStyle: { color: "rgba(22, 163, 74, 0.7)" } },
+              { value: 78, itemStyle: { color: "rgba(147, 51, 234, 0.7)" } },
+              { value: 73, itemStyle: { color: "rgba(234, 88, 12, 0.7)" } },
+            ],
+          },
+        ],
+      };
+      marketChart.setOption(marketOption);
+
+      // 为所有图表添加响应式调整
+      window.addEventListener("resize", function () {
+        profitChart.resize();
+        productChart.resize();
+        marketChart.resize();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业竞争模拟实验 - 第七年</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .nav-link { transition: all 0.3s ease; transform: skew(-20deg); }
+        .nav-link span { display: inline-block; transform: skew(20deg); }
+        .nav-link:hover { background-color: #1e40af; transform: translateY(-2px) skew(-20deg); }
+        .table-wrapper { overflow-x: auto; }
+        .task-completed { color: #10b981; }
+        .task-pending { color: #f59e0b; }
+        .task-progress { color: #3b82f6; }
+        
+        /* 表格通用样式 */
+        .highlight-table {
+            border-collapse: collapse;
+        }
+        .highlight-table th,
+        .highlight-table td {
+            position: relative;
+            transition: background-color 0.2s ease;
+        }
+        /* 行高亮效果 */
+        .highlight-table tbody tr:hover {
+            background-color: #e0f2fe;
+        }
+        /* 单元格hover高亮 */
+        .highlight-table td:hover,
+        .highlight-table th:hover {
+            background-color: #bae6fd;
+            z-index: 2;
+        }
+        /* 表头hover增强 */
+        .highlight-table thead th:hover {
+            background-color: #93c5fd;
+            color: #1e3a8a;
+        }
+        /* 订单详情表格居中样式 */
+        .order-detail-table th,
+        .order-detail-table td {
+            text-align: center !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 顶部导航 -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img src="https://bs.hubu.edu.cn/images/logo.png" alt="企业竞争模拟实验报表系统" class="h-16">
+                <span class="ml-2 text-2xl font-bold">· 时间海</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-2">
+                <a href="index.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>首页</span></a>
+                <a href="year0.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>起始年</span></a>
+                <a href="year1.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第一年</span></a>
+                <a href="year2.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第二年</span></a>
+                <a href="year3.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第三年</span></a>
+                <a href="year4.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第四年</span></a>
+                <a href="year5.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第五年</span></a>
+                <a href="year6.html" class="nav-link bg-blue-700 px-4 py-2 font-medium"><span>第六年</span></a>
+                <a href="year7.html" class="nav-link bg-blue-500 px-4 py-2 font-medium"><span>第七年</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 年份导航横幅 -->
+    <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">当前周期：第七年</h2>
+                    <p class="text-emerald-100">全球化垄断与生态构建阶段 | 全市场绝对主导 · 五产品生态化（含Emerald Ultra顶级定制）</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex space-x-3">
+                    <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm">
+                        <i class="fa fa-money mr-1"></i>净利润：458M
+                    </span>
+                    <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm">
+                        <i class="fa fa-shopping-cart mr-1"></i>订单量：258件
+                    </span>
+                    <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm">
+                        <i class="fa fa-cash-register mr-1"></i>期末现金：1286M
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 核心数据卡片 -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center">
+                <i class="fa fa-dashboard mr-3 text-indigo-600"></i>核心经营数据
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-md p-5 border-t-4 border-indigo-600 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">销售收入</h3>
+                        <i class="fa fa-money text-2xl text-indigo-600 opacity-70"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-indigo-900">2895 百万</p>
+                    <p class="text-gray-500 mt-1">订单数量：258 件</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-5 border-t-4 border-green-600 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">毛利润</h3>
+                        <i class="fa fa-line-chart text-2xl text-green-600 opacity-70"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-green-900">1986 百万</p>
+                    <p class="text-gray-500 mt-1">毛利率：68.6%</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-5 border-t-4 border-purple-600 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">净利润</h3>
+                        <i class="fa fa-bar-chart text-2xl text-purple-600 opacity-70"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-purple-900">458 百万</p>
+                    <p class="text-gray-500 mt-1">净利率：15.8%</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-5 border-t-4 border-orange-600 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700">期末现金</h3>
+                        <i class="fa fa-cash-register text-2xl text-orange-600 opacity-70"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-orange-900">1286 百万</p>
+                    <p class="text-gray-500 mt-1">现金流状况：绝对充裕</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 订单详情 -->
+        <section class="mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-file-text-o mr-2 text-indigo-600"></i>订单详情
+                </h2>
+                <div class="table-wrapper">
+                    <table class="min-w-full divide-y divide-gray-200 highlight-table order-detail-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">市场</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">产品名称</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">账期</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">交货期</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">单价（M）</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">订单数量</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">销售额（M）</th>
+                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">毛利（M）</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">本地</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Beryl</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">6.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">25</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">162.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">112</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">本地</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Crystal</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">2Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q3</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">9.8</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">22</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">215.6</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">158</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">区域</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Beryl</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">7.2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">23</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">165.6</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">118</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">区域</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Crystal</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">2Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q3</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">10.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">20</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">210.0</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">155</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">全国</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Sapphire</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">14.2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">38</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">539.6</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">385</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">全国</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Emerald</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">2Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q3</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">18.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">35</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">647.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">468</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">国际</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Emerald Pro</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q2</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">22.8</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">45</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1026.0</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">758</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">国际</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">Emerald Ultra</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">2Q</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Q3</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">28.5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">20</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">570.0</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">442</td>
+                            </tr>
+                            <tr class="bg-gray-50 font-semibold">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900" colspan="5">合计</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">258</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2895.8</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-700">1986</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 现金流量表 -->
+        <section class="mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-money mr-2 text-indigo-600"></i>现金流量表（单位：百万）
+                </h2>
+                <div class="table-wrapper">
+                    <table class="min-w-full divide-y divide-gray-200 highlight-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">项目</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">1季度</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">2季度</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">3季度</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">4季度</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="bg-indigo-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-indigo-900">收入总计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">728</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">756</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">718</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">693.8</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">应收款到期（+）</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">728</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">756</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">718</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">693.8</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">长期贷款(+)</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-red-900">支出总计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">258</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">245</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">232</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">218</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">初始运营资金</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">785</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">-</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">-</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">-</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">原料采购支付现金</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">98</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">92</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">88</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">82</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">加工费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">58</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">52</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">48</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">45</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">行政管理费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">12</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">12</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">12</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">12</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">市场开拓费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">12</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">10</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">8</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">6</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">产品研发费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">45</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">40</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">35</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">32</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">国际市场关税</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">33</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">39</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">41</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">41</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">归还短贷及利息</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                            </tr>
+                            <tr class="bg-green-50 font-semibold">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-green-900">现金余额</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">1255</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">1766</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">2252</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">1286</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 财务报表 -->
+        <section class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- 资产负债表 -->
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-balance-scale mr-2 text-indigo-600"></i>资产负债表（单位：百万）
+                </h2>
+                <div class="table-wrapper">
+                    <table class="min-w-full divide-y divide-gray-200 highlight-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">资产</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">年初数</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">期末数</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">负债及所有者权益</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">年初数</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">期末数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="bg-indigo-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-indigo-900" colspan="3">流动资产</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-indigo-900" colspan="3">负债</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">现金</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">785</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1286</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">短期负债</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">应收帐款</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">285</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">应付帐款</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">128</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">原材料</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">128</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">198</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">应交税金</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">98</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">158</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">产成品</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">156</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">258</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">长期负债</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">235</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">235</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">在制品</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">108</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">负债合计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">461</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">578</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">流动资产合计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1362</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">2212</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">所有者权益合计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1086</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1856</td>
+                            </tr>
+                            <tr class="bg-gray-50 font-semibold">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900">资产总计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-900">1547</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-900">2434</td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900">负债及权益总计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-900">1547</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-900">2434</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 损益表 -->
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-bar-chart mr-2 text-indigo-600"></i>损益表（单位：百万）
+                </h2>
+                <div class="table-wrapper">
+                    <table class="min-w-full divide-y divide-gray-200 highlight-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">项目</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">期初</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">期末</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-700">一、销售收入</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1861.6</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">2895.8</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">  减：成本</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">676.6</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">909.8</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-green-900">二、毛利</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">1185</td>
+                                <td class="px-6 py-3 text-center text-sm text-green-900">1986</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">  减：综合费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">758</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">1385</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">      折旧</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">62</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">85</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">      财务净损益</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">25</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">32</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">      国际关税</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">104</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">153</td>
+                            </tr>
+                            <tr class="bg-indigo-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-indigo-900">三、营业利润</td>
+                                <td class="px-6 py-3 text-center text-sm text-indigo-900">236</td>
+                                <td class="px-6 py-3 text-center text-sm text-indigo-900">331</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">  加：营业外净收益</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">48</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                            </tr>
+                            <tr class="bg-purple-50">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-purple-900">四、利润总额</td>
+                                <td class="px-6 py-3 text-center text-sm text-purple-900">284</td>
+                                <td class="px-6 py-3 text-center text-sm text-purple-900">516</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">减：所得税</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">82</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">142</td>
+                            </tr>
+                            <tr class="bg-orange-50 font-semibold">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-orange-900">五、净利润</td>
+                                <td class="px-6 py-3 text-center text-sm text-orange-900">286</td>
+                                <td class="px-6 py-3 text-center text-sm text-orange-900">458</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 综合管理费用明细表 -->
+                <h3 class="text-lg font-bold text-indigo-900 mt-6 mb-3 flex items-center">
+                    <i class="fa fa-list-alt mr-2 text-indigo-600"></i>综合管理费用明细表（单位：百万）
+                </h3>
+                <div class="table-wrapper">
+                    <table class="min-w-full divide-y divide-gray-200 highlight-table">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">项目</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">金额</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">行政管理费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">48</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">广告费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">设备维护费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">45</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">设备改造费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">85</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">租金</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">0</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">产品研发</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">162</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">市场开拓费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">36</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">ISO认证</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">18</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">国际市场认证</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">22</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">物流运输费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">158</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">生态体系建设费</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">185</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">其他运营费用</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-700">85</td>
+                            </tr>
+                            <tr class="bg-gray-50 font-semibold">
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900">合计</td>
+                                <td class="px-6 py-3 text-center text-sm text-gray-900">1385</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 任务清单 -->
+        <section class="mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-tasks mr-2 text-indigo-600"></i>第七年任务清单
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- 扩张任务 -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-globe text-indigo-600 mr-2"></i>全球化生态构建
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">Emerald Ultra顶级定制产品研发上市（投入162M研发费用）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">全球生产基地智能化改造（投入85M设备改造费用）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">构建全球经销商生态体系（投入185M生态建设费用）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">完成ISO27001信息安全认证（投入18M认证费用）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">国际高端市场品牌建设（投入36M市场费用）</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 运营任务 -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-cogs text-indigo-600 mr-2"></i>全市场垄断运营
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">六产品全市场价格体系垄断性定价</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">全球精准广告投放185M（国际占比70%）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">签订并交付258件销售订单（其中国际65件）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">全球供应链一体化管理（物流成本降低20%）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">智能决策系统全面上线（运营效率提升30%）</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 收尾任务 -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-flag-checkered text-indigo-600 mr-2"></i>最终收官任务
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">支付设备折旧费用85M</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">支付行政管理费48M</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">计提并缴纳所得税142M</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">完成七年经营全周期财务审计与复盘</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check task-completed mr-2"></i>
+                                <span class="text-gray-700">发布企业全球化生态发展白皮书</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 年度总结 -->
+        <section>
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center">
+                    <i class="fa fa-file-text mr-2 text-indigo-600"></i>第七年总结
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="leading-relaxed">
+                        第七年作为企业竞争模拟的收官阶段，成功实现全球化垄断与生态体系构建：全年无新增长期贷款（负债结构最优），总运营资金达785百万，
+                        全年获得258件订单（其中国际市场65件，占比25.2%，高端定制产品占比提升至40%），实现销售收入2895.8百万，净利润458百万，净利率15.8%，较第六年增长60.1%，垄断战略与生态化运营成效达到峰值。
+                    </p>
+                    <p class="leading-relaxed">
+                        财务方面，期末现金余额1286百万，现金流绝对充裕；长期负债维持235百万（资产负债率23.7%），财务结构达到最优状态；应收账款285百万、应付账款185百万，
+                        全球供应链账期管理效率提升至行业顶尖水平；原材料库存198百万，产成品库存258百万，在制品185百万，库存周转效率较第六年再提升18%，六产品库存结构完全匹配全球不同层级市场的高端需求。
+                    </p>
+                    <p class="leading-relaxed">
+                        运营方面，完成Emerald Ultra顶级定制产品研发上市和全球生产基地智能化改造，投入185百万广告费实现全球垄断性品牌覆盖，综合费用1385百万主要为广告费（185M）、研发（162M）、物流关税（311M）、设备改造（85M）和生态体系建设（185M）。
+                        产能稳定在200件/年（高端定制产品产能占比50%），完成ISO27001信息安全认证，国际市场高端产品收入占比达65%，核心经营指标较起始年增长10倍以上，七年经营周期实现了从区域企业到全球垄断型生态化企业的完整蜕变，成为行业绝对领导者。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2025 企业竞争模拟实验报表系统</p>
+                    <p class="text-gray-500 text-sm mt-1">湖北大学商学院 · 沙盘模拟实验</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-file-text-o text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-download text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-print text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa fa-share-alt text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
