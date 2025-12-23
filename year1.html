@@ -690,97 +690,135 @@
         </section>
 
         <!-- 任务清单 -->
-        <section class="mb-8">
-            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
-                    <i class="fa fa-tasks mr-2 text-blue-600"></i>第一年任务清单
-                </h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- 扩张任务 -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <i class="fa fa-expand text-blue-600 mr-2"></i>市场与产品扩张
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">开拓区域市场（投入5M市场开拓费用）</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">研发Crystal新产品（投入8M研发费用）</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">新增生产设备（产能提升至25件/年）</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">申请长期贷款15M（扩张资金）</span>
-                            </li>
-                        </ul>
-                    </div>
+<!-- 任务清单清单 -->
+<section class="mb-8">
+    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+            <i class="fa fa-list-ul mr-2 text-blue-600"></i>任务清单：
+        </h2>
+        <div class="space-y-6">
+            <!-- 年初任务 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">年初：（根据提示，完成部分打勾）</h3>
+                <ul class="space-y-2 pl-5">
+                    <li class="flex items-center"><span class="mr-2">⑴</span>支付应付税（根据上年度结果）<span class="ml-auto">☑</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑵</span>支付广告费<span class="ml-auto">☑</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑶</span>登记销售订单<span class="ml-auto">☑</span></li>
+                </ul>
+            </div>
 
-                    <!-- 运营任务 -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <i class="fa fa-cogs text-blue-600 mr-2"></i>运营任务（已完成）
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">采购双产品原料（满足22件生产需求）</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">组织Beryl/Crystal双产品生产</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">投放双市场广告费6M</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">签订并交付22件销售订单</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">设备改造升级（投入2M）</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- 收尾任务 -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <i class="fa fa-flag-checkered text-blue-600 mr-2"></i>收尾任务
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">支付设备折旧费用8M</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">支付行政管理费8M</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">计提并预缴所得税14M</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-check task-completed mr-2"></i>
-                                <span class="text-gray-700">完成年度财务结账</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa fa-circle task-progress mr-2"></i>
-                                <span class="text-gray-700">制定第二年全国市场扩张计划</span>
-                            </li>
-                        </ul>
-                    </div>
+            <!-- 每个季度任务 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">每个季度：</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-500">任务</th>
+                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">一季度</th>
+                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">二季度</th>
+                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">三季度</th>
+                                <th class="px-4 py-2 text-center text-sm font-medium text-gray-500">四季度</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑴申请短期贷款/更新短期贷款/还本付息</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑵更新应付款/归还应付款</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑶更新原料订单/原材料入库</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑷下原料订单</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑸更新生产/完工入库</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑹投资新生产线/生产线改造/变卖生产线</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑺开始下一批生产</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑻产品研发投资</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑼更新应收款/应收款收现</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑽按订单交货</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">□</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm text-gray-700">⑾支付行政管理费用</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                                <td class="px-4 py-2 text-center text-sm">☑</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </section>
+
+            <!-- 年末任务 -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">年末：</h3>
+                <ul class="space-y-2 pl-5">
+                    <li class="flex items-center"><span class="mr-2">⑴</span>申请长期贷款/更新长期贷款/支付利息<span class="ml-auto">☑</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑵</span>支付设备维护费<span class="ml-auto">☑</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑶</span>支付租金（或购买建筑）<span class="ml-auto">□</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑷</span>折旧<span class="ml-auto">☑</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑸</span>新市场开拓投资 /ISO资格认证投资<span class="ml-auto">□</span></li>
+                    <li class="flex items-center"><span class="mr-2">⑹</span>关账<span class="ml-auto">☑</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- 年度总结 -->
         <section>
